@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -8,7 +8,7 @@ function createWindow() {
 
   // Check if the build folder and index.html file exist
   if (!fs.existsSync(buildPath) || !fs.existsSync(indexPath)) {
-    console.error("config files not found. Exiting...");
+    console.error("Application files not found. Exiting...");
     app.quit();
     return;
   }
@@ -36,4 +36,6 @@ function createWindow() {
   Menu.setApplicationMenu(menu);
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+});

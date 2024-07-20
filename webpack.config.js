@@ -2,13 +2,42 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const fs = require('fs');
+const os = require('os');
 
 // Load environment variables from .env.prod
-const env = dotenv.config({ path: './.env.prod' }).parsed;
+const env = dotenv.config({ path: './.env.prod' }).parsed || {};
+
+// Function to set environment variables
+function setEnvironmentVariables() {
+  const homeDir = os.homedir();
+  const juneFilePath = path.join(homeDir, '.june');
+
+  console.info(`User home directory: ${homeDir}`);
+  console.info(`Checking if .june file exists at: ${juneFilePath}`);
+
+  if (fs.existsSync(juneFilePath)) {
+    console.info(".june file found. Reading file content...");
+    const fileContent = fs.readFileSync(juneFilePath, 'utf-8');
+    const lines = fileContent.split('\n');
+
+    lines.forEach(line => {
+      const [name, value] = line.trim().split('=');
+      if (name && value) {
+        env[name] = value;
+      }
+    });
+  } else {
+    console.error(".june file not found.");
+  }
+}
+
+// Set environment variables
+setEnvironmentVariables();
 
 // Convert environment variables to a format Webpack can use
 const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  prev[`process.env.${next}`] = JSON.stringify(env[next] || undefined);
   return prev;
 }, {});
 
