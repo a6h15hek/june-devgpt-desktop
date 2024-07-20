@@ -9,7 +9,7 @@ const JuneContext = createContext({});
 export const JuneContextProvider = ({ children }) => {
   if (!doesCredentialsExist()) {
     return (
-      <Box sx={{display: 'flex',justifyContent: 'center',alignItems: 'center',height: '100vh',}}>
+      <Box sx={{display: 'flex',justifyContent: 'center',alignItems: 'center',height: '100vh'}}>
         <Typography variant="h5" gutterBottom>
           June: Credentials not found
         </Typography>
