@@ -1,7 +1,18 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
+const fs = require("fs");
 
 function createWindow() {
+  const buildPath = path.join(__dirname, 'build');
+  const indexPath = path.join(buildPath, 'index.html');
+
+  // Check if the build folder and index.html file exist
+  if (!fs.existsSync(buildPath) || !fs.existsSync(indexPath)) {
+    console.error("config files not found. Exiting...");
+    app.quit();
+    return;
+  }
+
   let win = new BrowserWindow({
     title: "Just Ultimate Neural Enhancer - Dynamic Enigma Vortex Generating Predictive Technology (June DevGPT++)",
     width: 1400,
@@ -11,7 +22,8 @@ function createWindow() {
     }
   });
 
-  win.loadURL(`file://${path.join(__dirname, 'build/index.html')}`);
+  // Load the index.html file from the build folder
+  win.loadURL(`file://${indexPath}`);
 
   // Create a custom 'Reload' button
   let reloadButton = { label: "⟳ Reload", click: () => win.reload() };
