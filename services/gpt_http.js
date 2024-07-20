@@ -13,7 +13,7 @@ const gpt_chat_http = async (
   // Log the length of the message content in a single line
   const messageLengths = '[' + message.map((msg, i) => `${msg.role}=${msg.content.length}`).join(', ') + ']';
   console.log(`gpt.js -> gpt_http(): Message content lengths: ${messageLengths}`);
-  console.log(`gpt.js -> gpt_http(): input params: `, inputParams);
+  //console.log(`gpt.js -> gpt_http(): input params: `, inputParams);
 
   const requestData = {
     model,
