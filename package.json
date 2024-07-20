@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run run:gpt_metadata && webpack serve --open --hot --config webpack.config.js",
     "build": "npm run run:gpt_metadata && webpack --config webpack.config.js",
-    "open:desktop": "electron .electron.js",
+    "open:desktop": "npm run build && electron .electron.js",
     "run:gpt_metadata": "node ./scripts/gpt_metadata.js"
   },
   "dependencies": {

@@ -100,4 +100,11 @@ async function submit_feedback(feedback_argument) {
   }
 }
 
-module.exports = { get_metadata, submit_feedback, get_chat_db_stat, on_message_received, send_message_server };
+const doesCredentialsExist = () => {
+  const url = process.env.GPT_DEFAULT_API_URL;
+  const key = process.env.GPT_API_KEY;
+  return url && key && url.trim() !== '' && key.trim() !== '';
+}
+
+
+module.exports = { get_metadata, submit_feedback, get_chat_db_stat, on_message_received, send_message_server, doesCredentialsExist };

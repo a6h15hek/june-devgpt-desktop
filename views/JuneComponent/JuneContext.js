@@ -1,13 +1,23 @@
 import React, {useState, createContext, useContext, useEffect} from 'react';
 const { get_metadata, get_chat_db_stat, submit_feedback, 
-  on_message_received, send_message_server} = require('@connector/june')
+  on_message_received, send_message_server, doesCredentialsExist} = require('@connector/june')
 import {useGlobalStatus} from '../GlobalStatusContext';
+import { Typography, Box} from '@mui/material';
 
 const JuneContext = createContext({});
 
 export const JuneContextProvider = ({ children }) => {
-  const {fetchMetadataMapping, startIncomingMessageListener ,...restJuneObject} =
-    useJuneService({});
+  if (!doesCredentialsExist()) {
+    return (
+      <Box sx={{display: 'flex',justifyContent: 'center',alignItems: 'center',height: '100vh',}}>
+        <Typography variant="h5" gutterBottom>
+          June: Credentials not found
+        </Typography>
+      </Box>
+    );
+  }
+  
+  const {fetchMetadataMapping, startIncomingMessageListener ,...restJuneObject} = useJuneService();
 
   useEffect(() => {
     fetchMetadataMapping();
@@ -22,7 +32,7 @@ export const JuneContextProvider = ({ children }) => {
   );
 };
 
-const useJuneService = ({}) => {
+const useJuneService = () => {
   const [systemPromptTabList, setSystemPromptTabList] = useState([]);
   const [modelList, setModelList] = useState([]);
   const [systemPromptMessages, setSystemPromptMessages] = useState({});
