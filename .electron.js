@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require("electron");
+const path = require("path");
 
 function createWindow() {
   let win = new BrowserWindow({
@@ -10,7 +11,7 @@ function createWindow() {
     }
   });
 
-  win.loadURL("http://localhost:7777");
+  win.loadURL(`file://${path.join(__dirname, 'build/index.html')}`);
 
   // Create a custom 'Reload' button
   let reloadButton = { label: "⟳ Reload", click: () => win.reload() };

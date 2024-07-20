@@ -18,5 +18,6 @@ git.properties
 
 # Ignore the build folder of views
 views/build
+build
 
 package-lock.json
