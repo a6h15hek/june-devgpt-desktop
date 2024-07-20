@@ -1,0 +1,18 @@
+---
+name: No Prompt
+description: This have no predefined instructions to follow. It passes raw messages to llm. helpful when doing something that don't need any predefined logic.
+context: false
+model: gpt-35-turbo-16k-0613
+temperature: 0.0
+top_p: 0.0
+n: 1
+presence_penalty: 0.0
+frequency_penalty: 0.0
+---
+
+#system-prompt
+
+
+#user-prompt
+@user_input_message@
+

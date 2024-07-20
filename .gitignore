@@ -1,0 +1,22 @@
+# .gitignore
+
+# Ignore JetBrains IDE files
+.idea
+.vscode
+
+# Ignore dependencies
+node_modules/
+
+# Ignore logs
+logs/
+
+# Ignore environment variables
+.env.local
+
+# Ignore generated git properties file variables
+git.properties
+
+# Ignore the build folder of views
+views/build
+
+package-lock.json

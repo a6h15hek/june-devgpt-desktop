@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Fira Code Regular';
+    src: url('./assets/fonts/FiraCode-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Fira Code Medium';
+    src: url('./assets/fonts/FiraCode-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
