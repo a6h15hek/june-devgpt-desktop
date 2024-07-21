@@ -20,4 +20,6 @@ git.properties
 views/build
 build
 
+static/generated
+
 package-lock.json

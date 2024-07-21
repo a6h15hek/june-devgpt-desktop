@@ -74,11 +74,16 @@ function get_gpt_system_prompts() {
     return { metadataMapping, promptMapping };  // Return both mappings
 }
 
-
-  function main() {
+function main() {
     const jsonObject = get_gpt_system_prompts();
 
-    const filePath = path.join(__dirname, '../static/generated/gpt_metadata.json');
+    const outputDirectory = path.join(__dirname, '../static/generated');
+    const filePath = path.join(outputDirectory, 'gpt_metadata.json');
+
+    // Check if the directory exists, if not, create it
+    if (!fs.existsSync(outputDirectory)) {
+        fs.mkdirSync(outputDirectory, { recursive: true });
+    }
 
     fs.writeFile(filePath, JSON.stringify(jsonObject, null, 2), (err) => {
         if (err) {

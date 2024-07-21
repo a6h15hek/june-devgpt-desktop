@@ -1,6 +1,6 @@
 ---
 name: Developer Question
-description: Copy of devgpt
+description: GPT for developer question.
 context: false
 model: gpt-4-0613
 temperature: 0.0
