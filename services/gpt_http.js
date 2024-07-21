@@ -24,8 +24,6 @@ const gpt_chat_http = async (
     stream: false,
     presence_penalty: 0.0,
     frequency_penalty: 0.0,
-    projects: [],
-    repos: ["projects"],
     ...inputParams
   };
 
