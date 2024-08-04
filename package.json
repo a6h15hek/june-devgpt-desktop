@@ -2,11 +2,15 @@
   "name": "june-devgpt",
   "version": "1.0.0",
   "private": true,
+  "main": "electron.js",
   "scripts": {
     "start": "npm run run:gpt_metadata && webpack serve --open --hot --config webpack.config.js",
     "build": "npm run run:gpt_metadata && webpack --config webpack.config.js",
-    "open:desktop": "npm run build && electron .electron.js",
-    "run:gpt_metadata": "node ./scripts/gpt_metadata.js"
+    "open:desktop": "npm run build && electron electron.js",
+    "run:gpt_metadata": "node ./scripts/gpt_metadata.js",
+    "package-mac": "node package-app.js darwin",
+    "package-win": "node package-app.js win32",
+    "release": "npm run build && npm run package-mac && npm run package-win"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -29,6 +33,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "electron": "^31.0.0",
+    "electron-packager": "^17.1.2",
     "style-loader": "^4.0.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"

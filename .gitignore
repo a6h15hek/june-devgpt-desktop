@@ -19,6 +19,7 @@ git.properties
 # Ignore the build folder of views
 views/build
 build
+dist
 
 static/generated
 
