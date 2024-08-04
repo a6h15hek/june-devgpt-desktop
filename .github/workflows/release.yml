@@ -28,7 +28,7 @@ jobs:
         run: npm run release
 
       - name: Print dist folder tree
-        run: tree dist -L 3
+        run: tree dist -L 2
 
       - name: Create Release
         id: create_release
@@ -47,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/darwin/JuneDevGPT_WIN*/JuneDevGPT_WIN*.exe
+          asset_path: dist/JuneDevGPT_WIN_*/JuneDevGPT_WIN_*.exe
           asset_name: ${{ github.event.repository.name }}.exe
           asset_content_type: application/octet-stream
 
@@ -57,6 +57,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/darwin/JuneDevGPT_WIN*/JuneDevGPT_MACOS*.app
+          asset_path: dist/JuneDevGPT_MACOS_*/JuneDevGPT_MACOS_*.app
           asset_name: ${{ github.event.repository.name }}.app
           asset_content_type: application/octet-stream
