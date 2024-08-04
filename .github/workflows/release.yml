@@ -28,7 +28,7 @@ jobs:
         run: npm run release
 
       - name: Print dist folder tree
-        run: tree /dist -L 3
+        run: tree dist -L 3
 
       - name: Create Release
         id: create_release
