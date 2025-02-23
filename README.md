@@ -3,7 +3,9 @@
 ## Overview
 This application leverages ChatGPT to provide a versatile set of system prompts. Users can select different modes such as conversation mode, developer question mode, code refactor mode, SQL command writer mode, and more. Simply choose a mode, input your query, and receive a response from ChatGPT.
 
-![Description of the image](https://github.com/a6h15hek/june-devgpt-desktop/blob/main/docs/june.png)
+
+![JUNE](https://github.com/user-attachments/assets/2ae8dcf2-4ec6-4bd7-af76-344c69f2f6c4)
+
 
 
 ## Features
